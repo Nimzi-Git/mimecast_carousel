@@ -1,0 +1,24 @@
+<div class="container">
+   <div class="header">
+    <span class="text-heading">Carousel Test</span>
+   </div>
+   <div class ="loading" *ngIf="loading">
+    <img src="../../assets/loading.svg" alt="Loading....">
+   <span class="loading-text">Loading....</span>
+   </div>
+   <div #scrollDrawer>
+    <div *ngFor="let image of (listOfTempImagesObs | async)">
+     <app-carousel-card [imageDet]="image"></app-carousel-card>
+    </div>
+   </div>
+
+   <div class="footer-buttons" *ngIf="!mobile">
+    <button (click)="slideRight()" 
+            class="buttons prev-button" 
+            [ngClass]="imageId>1? 'visible': 'hidden'">Prev</button>
+    <button (click)="slideLeft()"
+            class="buttons next-button" 
+            [ngClass]="imageId >= totalImages? 'hidden' : 'visible'">Next</button>
+   </div>
+</div>
+
